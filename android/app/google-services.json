@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "226843502357",
+    "project_id": "cms-app-e8766",
+    "storage_bucket": "cms-app-e8766.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226843502357:android:0379650c051891f7312b1c",
+        "android_client_info": {
+          "package_name": "com.riayatech.cms"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_94tFOzxa7gYD1sA8UKKuz7LowGBKkC4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
