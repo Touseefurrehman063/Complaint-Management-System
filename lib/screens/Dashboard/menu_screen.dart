@@ -68,7 +68,7 @@ class _MenuScreenState extends State<MenuScreen> {
               ),
 
               SizedBox(
-                height: Get.height * 0.08,
+                height: Get.height * 0.03,
               ),
               // GetBuilder<ProfileController>(builder: (context) {
               //   return ClipRRect(
@@ -99,9 +99,13 @@ class _MenuScreenState extends State<MenuScreen> {
               //           )));
 
               // }),
-
+              CircleAvatar(
+                radius: Get.width * 0.1,
+                backgroundColor: ColorManager.kWhiteColor,
+                backgroundImage: AssetImage(Images.avatar),
+              ),
               SizedBox(
-                height: Get.height * 0.01,
+                height: Get.height * 0.015,
               ),
               SizedBox(
                 width: Get.width * 0.65,
@@ -123,15 +127,24 @@ class _MenuScreenState extends State<MenuScreen> {
 
               SizedBox(
                 width: Get.width * 0.65,
-                child: Text(
-                  "RN : A24589",
-                  style: GoogleFonts.poppins(
-                    color: ColorManager.kWhiteColor,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 12,
+                child: RichText(
+                  text: TextSpan(
+                    text: 'RN : ',
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: ColorManager.kWhiteColor,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'A24589',
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          color: ColorManager.kWhiteColor,
+                        ),
+                      ),
+                    ],
                   ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                 ),
               ),
 
@@ -316,6 +329,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     textStyle: GoogleFonts.poppins(
                       fontSize: 15,
                       color: ColorManager.kWhiteColor,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -381,7 +395,7 @@ Future<String?> deleteAccount(context) {
     builder: (BuildContext context) =>
         StatefulBuilder(builder: (context, newState) {
       return AlertDialog(
-        backgroundColor: Theme.of(context).primaryColorDark,
+        backgroundColor: ColorManager.kPrimaryColor,
         title: Text('DeleteAccount'.tr,
             style: GoogleFonts.poppins(
                 fontSize: 14, color: ColorManager.kWhiteColor)),

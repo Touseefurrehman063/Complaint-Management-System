@@ -23,8 +23,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         decoration: BoxDecoration(
           color: ColorManager.kPrimaryColor,
           image: DecorationImage(
-              image: AssetImage(Images.backgroundimage),
-              alignment: Alignment.topCenter),
+            image: AssetImage(
+              Images.backgroundimageCrop,
+            ),
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +71,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   buttonheight: Get.height * 0.07,
                   textfontsize: 18,
                   radius: Get.height * 0.06,
-                  text: 'Lets Go',
+                  text: "Let's Go",
                   backgroundColor: ColorManager.kWhiteColor,
                   buttonwidth: Get.width * 0.8,
                   onPress: () {

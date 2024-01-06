@@ -86,7 +86,7 @@ class SlideTransitions extends StatefulWidget {
 class _SlideTransitionsState extends State<SlideTransitions>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
-    duration: const Duration(milliseconds: 4000),
+    duration: const Duration(milliseconds: 3000),
     vsync: this,
   )..repeat(reverse: true);
   late final Animation<Offset> _offsetAnimation = Tween<Offset>(
@@ -108,29 +108,6 @@ class _SlideTransitionsState extends State<SlideTransitions>
     return SlideTransition(
       position: _offsetAnimation,
       child: Padding(padding: const EdgeInsets.all(8.0), child: widget.image),
-    );
-  }
-}
-
-class BackgroundLogoimage extends StatelessWidget {
-  const BackgroundLogoimage({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      top: 100,
-      right: 0,
-      child: Container(
-        height: Get.height * 0.8,
-        width: Get.width,
-        alignment: Alignment.centerLeft,
-        child: Image.asset(
-          Images.backgroundimage,
-          fit: BoxFit.cover,
-        ),
-      ),
     );
   }
 }

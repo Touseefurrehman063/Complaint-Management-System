@@ -3,6 +3,13 @@ import 'package:flutter/material.dart';
 class ColorManager {
   static const Color kPrimaryColor = Color(0xFFF37221);
   static const Color kPrimaryBlueColor = Color(0xFF2959A8);
+  static const Color kPrimaryOverallColor = Color(0xFF170048);
+  static const Color kPrimarycardgreyColor = Color(0xFFF1F1F1);
+
+  static const Color kPrimarycancelColor = Color(0xFFFF0000);
+  static const Color kPrimarycompleteColor = Color(0xFF2F9634);
+  static const Color kPrimaryinprogressColor = Color(0xFFFFB906);
+  static const Color kPrimarypendingColor = Color(0xFF109CF1);
 
   static const Color kPrimaryLightColor = Color(0xFFE5EEF9);
   static const Color kSecondaryColor = Color(0xFFDBEAF8);

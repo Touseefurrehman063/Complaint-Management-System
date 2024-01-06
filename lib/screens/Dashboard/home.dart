@@ -1,9 +1,12 @@
-import 'package:cms_application/controller/profile_controller.dart';
+import 'package:cms_application/components/ticket_search_field.dart';
+import 'package:cms_application/controller/home_controller.dart';
+import 'package:cms_application/screens/Ticket/ticket_screen.dart';
 import 'package:cms_application/utils/AppImages.dart';
 import 'package:cms_application/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // var profileContr = Get.put<ProfileController>(ProfileController());
+  var homeController = Get.put<HomeController>(HomeController());
 
   // //String name = '';
   // // String pmdcno = "";
@@ -54,297 +57,459 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leadingWidth: Get.width * 0.2,
-        leading: InkWell(
-          onTap: () {
-            if (ZoomDrawer.of(context)!.isOpen()) {
-              ZoomDrawer.of(context)!.close();
-            } else {
-              ZoomDrawer.of(context)!.open();
-            }
-          },
+      body: SafeArea(
+        minimum: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
+        child: SingleChildScrollView(
           child: Container(
-            alignment: Alignment.center, // use aligment
-            color: ColorManager.kWhiteColor,
-            child: Image.asset(
-              Images.menuIcon,
-              height: 27,
-              width: 27,
-              fit: BoxFit.contain,
-              color: ColorManager.kPrimaryColor,
+            decoration: BoxDecoration(
+              color: ColorManager.kWhiteColor,
+              image: DecorationImage(
+                image: AssetImage(
+                  Images.backgroundimageCrop,
+                ),
+              ),
             ),
-          ),
-        ),
-        toolbarHeight: Get.height * 0.1,
-        centerTitle: true,
-        title: Image.asset(
-          Images.logo,
-          height: Get.height * 0.07,
-        ),
-        actions: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              InkWell(
-                  onTap: () {
-                    // Get.to(() => const NotificationScreen());
-                  },
-                  child: Image.asset(
-                    Images.notification,
-                    height: Get.height * 0.035,
-                    color: ColorManager.kPrimaryColor,
-                  )),
-            ],
-          ),
-        ],
-      ),
-      body: GetBuilder<ProfileController>(builder: (cont) {
-        return SafeArea(
-          minimum:
-              EdgeInsets.only(left: Get.width * 0.05, right: Get.width * 0.05)
-                  .copyWith(top: 0),
-          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: Get.height * 0.01,
+                  height: Get.height * 0.03,
                 ),
-
+                Row(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        if (ZoomDrawer.of(context)!.isOpen()) {
+                          ZoomDrawer.of(context)!.close();
+                        } else {
+                          ZoomDrawer.of(context)!.open();
+                        }
+                      },
+                      child: Container(
+                        alignment: Alignment.center, // use aligment
+                        color: ColorManager.kWhiteColor,
+                        child: Image.asset(
+                          Images.menuIcon,
+                          height: 27,
+                          width: 27,
+                          fit: BoxFit.contain,
+                          color: ColorManager.kPrimaryBlueColor,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    Image.asset(
+                      Images.logo,
+                      height: Get.height * 0.07,
+                      width: Get.width * 0.4,
+                    ),
+                    const Spacer(),
+                    SizedBox(
+                      height: Get.height * 0.06,
+                      width: Get.width * 0.08,
+                      child: InkWell(
+                          onTap: () {
+                            // Get.to(() => const NotificationScreen());
+                          },
+                          child: Image.asset(
+                            Images.notification,
+                            color: ColorManager.kPrimaryBlueColor,
+                          )),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: Get.height * 0.003,
+                ),
+                Center(
+                  child: Text(
+                    'Hello Mr. Ahmad !'.tr,
+                    style: GoogleFonts.poppins(
+                        fontSize: 18,
+                        color: ColorManager.kPrimaryColor,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    'Track Your Camplaint'.tr,
+                    style: GoogleFonts.poppins(
+                        fontSize: 12,
+                        color: ColorManager.kblackColor,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
                 SizedBox(
                   height: Get.height * 0.01,
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-
-                //     Container(
-                //       width: Get.width * 0.45,
-                //       height: Get.height * 0.25,
-                //       decoration: BoxDecoration(
-                //           borderRadius: BorderRadius.circular(10),
-                //           color: ColorManager.kPrimaryColor),
-                //       child: ElevatedButton(
-                //         style: ElevatedButton.styleFrom(
-                //             elevation: 0.0,
-                //             backgroundColor: Colors.transparent,
-                //             shadowColor: Colors.transparent),
-                //         onPressed: () {
-                //           Get.to(() => const ConfigureAppointmentScreen());
-                //         },
-                //         child: Column(
-                //           mainAxisAlignment: MainAxisAlignment.center,
-                //           children: [
-                //             Image.asset(
-                //               Images.configuationAppointment,
-                //               height: Get.height * 0.1,
-                //               width: Get.width * 0.3,
-                //             ),
-                //             SizedBox(
-                //               height: Get.height * 0.01,
-                //             ),
-                //             Text('configureappointments'.tr,
-                //                 textAlign: TextAlign.center,
-                //                 style: GoogleFonts.poppins(
-                //                     fontWeight: FontWeight.bold,
-                //                     fontSize: 12,
-                //                     color: ColorManager.kWhiteColor)),
-                //             SizedBox(
-                //               height: Get.height * 0.005,
-                //             ),
-                //             Text('adjustyourschedule'.tr,
-                //                 textAlign: TextAlign.center,
-                //                 style: GoogleFonts.poppins(
-                //                     fontSize: 10,
-                //                     color: ColorManager.kWhiteColor))
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-
-                //     Container(
-                //       width: Get.width * 0.43,
-                //       height: Get.height * 0.25,
-                //       decoration: BoxDecoration(
-                //           borderRadius: BorderRadius.circular(10),
-                //           gradient: const LinearGradient(
-                //               begin: Alignment.topRight,
-                //               end: Alignment.bottomRight,
-                //               colors: [
-                //                 Color(0xffFDD504),
-                //                 Color(0xffFCB006),
-                //               ])),
-                //       child: ElevatedButton(
-                //         style: ElevatedButton.styleFrom(
-                //             elevation: 0.0,
-                //             backgroundColor: Colors.transparent,
-                //             shadowColor: Colors.transparent),
-                //         onPressed: () {
-                //           Get.to(() => const TodayAppointments());
-                //           //Get.to(() => DailyViewAppointments());
-                //         },
-                //         child: Padding(
-                //           padding: EdgeInsets.only(
-                //               top: Get.height * 0.015,
-                //               bottom: Get.height * 0.015),
-                //           child: Column(
-                //             crossAxisAlignment: CrossAxisAlignment.center,
-                //             mainAxisAlignment: MainAxisAlignment.center,
-                //             children: [
-                //               Image.asset(
-                //                 Images.managementAppointment,
-                //                 height: Get.height * 0.1,
-                //                 width: Get.width * 0.3,
-                //               ),
-                //               SizedBox(
-                //                 height: Get.height * 0.005,
-                //               ),
-                //               Text('manageappointments'.tr,
-                //                   textAlign: TextAlign.center,
-                //                   style: GoogleFonts.poppins(
-                //                       fontWeight: FontWeight.bold,
-                //                       fontSize: 12,
-                //                       color: ColorManager.kWhiteColor)),
-                //               SizedBox(
-                //                 height: Get.height * 0.005,
-                //               ),
-                //               Text('approve/aisapproveappointments'.tr,
-                //                   textAlign: TextAlign.center,
-                //                   style: GoogleFonts.poppins(
-                //                       fontSize: 10,
-                //                       color: ColorManager.kWhiteColor))
-                //             ],
-                //           ),
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-
+                CustomTicketSearchField(
+                    enable: true,
+                    controller: homeController.ticketSearchController),
                 SizedBox(
                   height: Get.height * 0.01,
                 ),
-
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-
-                //     Container(
-                //       width: Get.width * 0.45,
-                //       height: Get.height * 0.25,
-                //       decoration: BoxDecoration(
-                //           borderRadius: BorderRadius.circular(10),
-                //           color: ColorManager.kPrimaryColor),
-                //       child: ElevatedButton(
-                //         style: ElevatedButton.styleFrom(
-                //             elevation: 0.0,
-                //             backgroundColor: Colors.transparent,
-                //             shadowColor: Colors.transparent),
-                //         onPressed: () {
-                //           Get.to(const AppointmentHistoryscreen());
-                //         },
-                //         child: Column(
-                //           mainAxisAlignment: MainAxisAlignment.center,
-                //           children: [
-                //             Image.asset(
-                //               Images.consultedVault,
-                //               height: Get.height * 0.1,
-                //               width: Get.width * 0.3,
-                //             ),
-                //             SizedBox(
-                //               height: Get.height * 0.01,
-                //             ),
-                //             Text('consultedvault'.tr,
-                //                 textAlign: TextAlign.center,
-                //                 style: GoogleFonts.poppins(
-                //                     fontWeight: FontWeight.bold,
-                //                     fontSize: 12,
-                //                     color: ColorManager.kWhiteColor)),
-                //             SizedBox(
-                //               height: Get.height * 0.005,
-                //             ),
-                //             Text('viewconsultations'.tr,
-                //                 textAlign: TextAlign.center,
-                //                 style: GoogleFonts.poppins(
-                //                     fontSize: 10,
-                //                     color: ColorManager.kWhiteColor))
-                //           ],
-                //         ),
-                //       ),
-                //     ),
-
-                //     Container(
-                //       width: Get.width * 0.43,
-                //       height: Get.height * 0.25,
-                //       decoration: BoxDecoration(
-                //           borderRadius: BorderRadius.circular(10),
-                //           gradient: const LinearGradient(colors: [
-                //             Color(0xffFF4D4D),
-                //             Color(0xffFF7B7B),
-                //           ])),
-                //       child: ElevatedButton(
-                //         style: ElevatedButton.styleFrom(
-                //             elevation: 0.0,
-                //             backgroundColor: Colors.transparent,
-                //             shadowColor: Colors.transparent),
-                //         onPressed: () {
-                //           Fluttertoast.showToast(
-                //               msg: "ComingSoon".tr,
-                //               toastLength: Toast.LENGTH_SHORT,
-                //               gravity: ToastGravity.CENTER,
-                //               timeInSecForIosWeb: 1,
-                //               backgroundColor: ColorManager.kPrimaryLightColor,
-                //               textColor: ColorManager.kPrimaryColor,
-                //               fontSize: 14.0);
-                //           //  Get.to(const HealthSummaryScreen());
-                //         },
-                //         child: Padding(
-                //           padding: EdgeInsets.only(
-                //               top: Get.height * 0.015,
-                //               bottom: Get.height * 0.015),
-                //           child: Column(
-                //             crossAxisAlignment: CrossAxisAlignment.center,
-                //             mainAxisAlignment: MainAxisAlignment.center,
-                //             children: [
-                //               Image.asset(
-                //                 Images.healthSummry,
-                //                 height: Get.height * 0.1,
-                //                 width: Get.width * 0.3,
-                //               ),
-                //               SizedBox(
-                //                 height: Get.height * 0.01,
-                //               ),
-                //               Text('healthsummary'.tr,
-                //                   textAlign: TextAlign.center,
-                //                   style: GoogleFonts.poppins(
-                //                       fontWeight: FontWeight.bold,
-                //                       fontSize: 12,
-                //                       color: ColorManager.kWhiteColor)),
-                //               SizedBox(
-                //                 height: Get.height * 0.005,
-                //               ),
-                //               Text('patientmonitoring'.tr,
-                //                   textAlign: TextAlign.center,
-                //                   style: GoogleFonts.poppins(
-                //                       fontSize: 10,
-                //                       color: ColorManager.kWhiteColor))
-                //             ],
-                //           ),
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-
+                InkWell(
+                  onTap: () {
+                    Get.to(() => const TicketScreen());
+                  },
+                  child: Card(
+                    shadowColor: Colors.transparent,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(Get.width * 0.07)),
+                    child: Container(
+                      height: Get.height * 0.15,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: Get.width * 0.01,
+                          vertical: Get.width * 0.03),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            opacity: 0.7,
+                            fit: BoxFit.fill,
+                            image: AssetImage(
+                              Images.homeoverallbackgroundimage,
+                            ),
+                          ),
+                          borderRadius:
+                              BorderRadius.circular(Get.width * 0.07)),
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: Get.width * 0.05),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              height: Get.height * 0.11,
+                              width: Get.width * 0.2,
+                              child: Image.asset(
+                                Images.homeoverall,
+                                color: ColorManager.kWhiteColor,
+                              ),
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  '20',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 40,
+                                      color: ColorManager.kWhiteColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  'Overall Tickets',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 12,
+                                      color: ColorManager.kWhiteColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
                 SizedBox(
-                  height: Get.height * 0.01,
+                  height: Get.height * 0.003,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Card(
+                      shadowColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(Get.width * 0.07)),
+                      child: Container(
+                        width: Get.width * 0.425,
+                        height: Get.height * 0.19,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(Get.width * 0.07),
+                          gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                ColorManager.kPrimarypendingColor
+                                    .withOpacity(0.4),
+                                ColorManager.kPrimarypendingColor,
+                              ]),
+                        ),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              elevation: 0.0,
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent),
+                          onPressed: () {
+                            // Get.to(const AppointmentHistoryscreen());
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: Get.width * 0.015,
+                                vertical: Get.width * 0.04),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      height: Get.height * 0.08,
+                                      width: Get.width * 0.14,
+                                      child: Image.asset(
+                                        Images.homepending,
+                                        color: ColorManager.kWhiteColor,
+                                      ),
+                                    ),
+                                    Text(
+                                      '10',
+                                      style: GoogleFonts.poppins(
+                                          fontSize: 25,
+                                          color: ColorManager.kWhiteColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'Pending Tickets\n( Not process yet )',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 12,
+                                      color: ColorManager.kWhiteColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Card(
+                      shadowColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(Get.width * 0.07)),
+                      child: Container(
+                        width: Get.width * 0.425,
+                        height: Get.height * 0.19,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(Get.width * 0.07),
+                          gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                ColorManager.kPrimaryinprogressColor
+                                    .withOpacity(0.4),
+                                ColorManager.kPrimaryinprogressColor,
+                              ]),
+                        ),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              elevation: 0.0,
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent),
+                          onPressed: () {
+                            // Get.to(const AppointmentHistoryscreen());
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: Get.width * 0.015,
+                                vertical: Get.width * 0.04),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      height: Get.height * 0.08,
+                                      width: Get.width * 0.14,
+                                      child: Image.asset(
+                                        Images.homeinprogress,
+                                        color: ColorManager.kWhiteColor,
+                                      ),
+                                    ),
+                                    Text(
+                                      '05',
+                                      style: GoogleFonts.poppins(
+                                          fontSize: 25,
+                                          color: ColorManager.kWhiteColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'In Progress\nTickets',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 12,
+                                      color: ColorManager.kWhiteColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: Get.height * 0.003,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Card(
+                      shadowColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(Get.width * 0.07)),
+                      child: Container(
+                        width: Get.width * 0.425,
+                        height: Get.height * 0.19,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(Get.width * 0.07),
+                          gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                ColorManager.kPrimarycancelColor
+                                    .withOpacity(0.4),
+                                ColorManager.kPrimarycancelColor,
+                              ]),
+                        ),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              elevation: 0.0,
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent),
+                          onPressed: () {
+                            // Get.to(const AppointmentHistoryscreen());
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: Get.width * 0.015,
+                                vertical: Get.width * 0.04),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      height: Get.height * 0.08,
+                                      width: Get.width * 0.14,
+                                      child: Image.asset(
+                                        Images.homecancel,
+                                        color: ColorManager.kWhiteColor,
+                                      ),
+                                    ),
+                                    Text(
+                                      '02',
+                                      style: GoogleFonts.poppins(
+                                          fontSize: 25,
+                                          color: ColorManager.kWhiteColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'Cancel Tickets',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 12,
+                                      color: ColorManager.kWhiteColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Card(
+                      shadowColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(Get.width * 0.07)),
+                      child: Container(
+                        width: Get.width * 0.425,
+                        height: Get.height * 0.19,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(Get.width * 0.07),
+                          gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                ColorManager.kPrimarycompleteColor
+                                    .withOpacity(0.4),
+                                ColorManager.kPrimarycompleteColor,
+                              ]),
+                        ),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              elevation: 0.0,
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent),
+                          onPressed: () {
+                            // Get.to(const AppointmentHistoryscreen());
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: Get.width * 0.015,
+                                vertical: Get.width * 0.04),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      height: Get.height * 0.08,
+                                      width: Get.width * 0.14,
+                                      child: Image.asset(
+                                        Images.homecomplete,
+                                        color: ColorManager.kWhiteColor,
+                                      ),
+                                    ),
+                                    Text(
+                                      '05',
+                                      style: GoogleFonts.poppins(
+                                          fontSize: 25,
+                                          color: ColorManager.kWhiteColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'Completed',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 12,
+                                      color: ColorManager.kWhiteColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: Get.height * 0.003,
                 ),
               ],
             ),
           ),
-        );
-      }),
+        ),
+      ),
     );
   }
 }

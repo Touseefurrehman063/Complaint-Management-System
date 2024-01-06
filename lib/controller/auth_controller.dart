@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:cms_application/screens/Auth%20Screen/forget_password.dart';
+import 'package:cms_application/components/toaster.dart';
 import 'package:cms_application/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -89,18 +89,12 @@ class AuthController extends GetxController implements GetxService {
     isTimerOver.value = false;
     const oneSecond = Duration(seconds: 1);
     Timer.periodic(oneSecond, (tim) {
-      if (timer == 0) {
+      if (timer.value == 0) {
         isTimerOver.value = true;
         tim.cancel();
         // Get.to(() => const ForgetPassword());
-        Fluttertoast.showToast(
-            msg: "codeexpire".tr,
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIosWeb: 1,
-            backgroundColor: ColorManager.kPrimaryColor,
-            textColor: ColorManager.kWhiteColor,
-            fontSize: 14.0);
+        CustomToast.showToaster(
+            "codeexpire", ColorManager.kPrimaryColor, ColorManager.kWhiteColor);
       } else {
         timer--;
       }

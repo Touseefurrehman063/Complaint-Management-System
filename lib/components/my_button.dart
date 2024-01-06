@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class MyButton extends StatefulWidget {
   String text;
   Color backgroundColor;
@@ -45,7 +46,7 @@ class _MyButtonState extends State<MyButton> {
               borderRadius: BorderRadius.circular(widget.radius!),
               border: Border.all(
                 color: widget.borderColor ?? widget.backgroundColor,
-                width: 2,
+                width: 1,
               )),
           child: Center(
             child: Text(

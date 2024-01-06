@@ -1,8 +1,7 @@
 import 'dart:io';
+import 'package:cms_application/components/toaster.dart';
 import 'package:cms_application/controller/profile_controller.dart';
-import 'package:cms_application/localDB/local_db.dart';
 import 'package:cms_application/screens/Add%20Ticket/add_ticket.dart';
-import 'package:cms_application/screens/Auth%20Screen/login.dart';
 import 'package:cms_application/screens/Dashboard/home.dart';
 import 'package:cms_application/screens/Profile/profile.dart';
 import 'package:cms_application/screens/Ticket/ticket_screen.dart';
@@ -37,14 +36,8 @@ class _DashBoardState extends State<DashBoard> with WidgetsBindingObserver {
         await launchUrl(Uri.parse(androidUrl));
       }
     } on Exception {
-      Fluttertoast.showToast(
-          msg: 'WhatsAppisnotinstalledonyourdevice.'.tr,
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: ColorManager.kPrimaryColor,
-          textColor: Colors.white,
-          fontSize: 14.0);
+      CustomToast.showToaster('WhatsAppisnotinstalledonyourdevice',
+          ColorManager.kPrimaryColor, ColorManager.kWhiteColor);
     }
   }
 
@@ -62,26 +55,21 @@ class _DashBoardState extends State<DashBoard> with WidgetsBindingObserver {
   // }
 
   void navigateToPage(int index) async {
-    if (index == 1) {
-      bool? isLoggedin = await LocalDb().getLoginStatus();
-      if ((isLoggedin ?? false) == false) {
-      } else {}
-    } else if (index == 2) {
-      bool? isLoggedin = await LocalDb().getLoginStatus();
-      if ((isLoggedin ?? false) == false) {
-        Get.off(() => const LoginScreen());
-      }
-    } else if (index == 3) {
-      bool? isLoggedin = await LocalDb().getLoginStatus();
-      if ((isLoggedin ?? false) == false) {
-        Get.off(() => const LoginScreen());
-      } else if (index == 0) {
-        // await _getDoctorBasicInfo();
-      }
-    }
-    setState(() {
-      ProfileController.i.updateselectedPage(index);
-    });
+    // if (index == 1) {
+
+    // } else if (index == 2) {
+
+    // } else if (index == 3) {
+    //   bool? isLoggedin = await LocalDb().getLoginStatus();
+    //   if ((isLoggedin ?? false) == false) {
+    //     Get.to(() => const LoginScreen());
+    //   } else if (index == 0) {
+    //     // await _getDoctorBasicInfo();
+    //   }
+    // }
+    // setState(() {
+    ProfileController.i.updateselectedPage(index);
+    // });
   }
 
   int tap = 0;
@@ -108,48 +96,53 @@ class _DashBoardState extends State<DashBoard> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: ProfileController.i.selectedPage,
-        children: pages,
-      ),
+      body: GetBuilder<ProfileController>(builder: (context) {
+        return IndexedStack(
+          index: ProfileController.i.selectedPage,
+          children: pages,
+        );
+      }),
       bottomNavigationBar: bottomAppbar(context),
     );
   }
 
   bottomAppbar(BuildContext context) {
-    return WillPopScope(
-      onWillPop: ProfileController.i.selectedPage == 0 &&
-              ZoomDrawer.of(context)!.isOpen() == false
-          ? showExitPopup
-          : homeScreenPopup,
-      child: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Color(
-                  int.parse('#1E1E1E'.substring(1, 7), radix: 16) + 0xFF000000),
-              blurRadius: 6.0,
-              spreadRadius: 0.4,
-            )
-          ],
-          color: Colors.white,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
+    return GetBuilder<ProfileController>(
+      builder: (cont) => WillPopScope(
+        onWillPop: ProfileController.i.selectedPage == 0 &&
+                ZoomDrawer.of(context)!.isOpen() == false
+            ? showExitPopup
+            : homeScreenPopup,
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Color(int.parse('#1E1E1E'.substring(1, 7), radix: 16) +
+                    0xFF000000),
+                blurRadius: 6.0,
+                spreadRadius: 0.4,
+              )
+            ],
+            color: Colors.white,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
           ),
-        ),
-        height: Get.height * 0.11,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            buildBottomNavItem(Images.homeIcon, "Home", 0, isSvg: false),
-            buildBottomNavItem(Images.ticketIcon, "Tickets", 1, isSvg: false),
-            buildBottomNavItem(Images.addticketIcon, "Add Ticket", 2,
-                isSvg: false),
-            buildBottomNavItem(Images.profileIcon, 'Profile', 3, isSvg: false),
-            buildBottomNavItem(Images.helpIcon, 'Help', 4, isSvg: false),
-          ],
+          height: Get.height * 0.11,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              buildBottomNavItem(Images.homeIcon, "Home", 0, isSvg: false),
+              buildBottomNavItem(Images.ticketIcon, "Tickets", 1, isSvg: false),
+              buildBottomNavItem(Images.addticketIcon, "Add Ticket", 2,
+                  isSvg: false),
+              buildBottomNavItem(Images.profileIcon, 'Profile', 3,
+                  isSvg: false),
+              buildBottomNavItem(Images.helpIcon, 'Help', 4, isSvg: false),
+            ],
+          ),
         ),
       ),
     );
