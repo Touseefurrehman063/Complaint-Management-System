@@ -141,50 +141,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           SizedBox(
                                             height: Get.height * 0.03,
                                           ),
-                                          const ProfileRecordWidget(
-                                            title: "Name",
+                                          ProfileRecordWidget(
+                                            title: "Name".tr,
                                             name: "Obaid",
                                           ),
                                           SizedBox(
                                             height: Get.height * 0.01,
                                           ),
-                                          const ProfileRecordWidget(
-                                            title: "Date of Birth",
+                                          ProfileRecordWidget(
+                                            title: "DateofBirth".tr,
                                             name: "19-03-2000",
                                           ),
                                           SizedBox(
                                             height: Get.height * 0.01,
                                           ),
-                                          const ProfileRecordWidget(
-                                            title: "Contact No",
+                                          ProfileRecordWidget(
+                                            title: "ContactNo".tr,
                                             name: "+92 331 123 4567",
                                           ),
                                           SizedBox(
                                             height: Get.height * 0.01,
                                           ),
-                                          const ProfileRecordWidget(
-                                            title: "Email",
+                                          ProfileRecordWidget(
+                                            title: "Email".tr,
                                             name: "ahmad@gmail.com",
                                           ),
                                           SizedBox(
                                             height: Get.height * 0.01,
                                           ),
-                                          const ProfileRecordWidget(
-                                            title: "Country",
+                                          ProfileRecordWidget(
+                                            title: "Country".tr,
                                             name: "Pakistan",
                                           ),
                                           SizedBox(
                                             height: Get.height * 0.01,
                                           ),
-                                          const ProfileRecordWidget(
-                                            title: "Province/State",
+                                          ProfileRecordWidget(
+                                            title: "ProvinceState".tr,
                                             name: "Punjab",
                                           ),
                                           SizedBox(
                                             height: Get.height * 0.01,
                                           ),
-                                          const ProfileRecordWidget(
-                                            title: "City",
+                                          ProfileRecordWidget(
+                                            title: "City".tr,
                                             name: "Rawalpindi",
                                           ),
                                           SizedBox(

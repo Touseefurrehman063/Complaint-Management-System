@@ -94,7 +94,7 @@ class _TicketScreenState extends State<TicketScreen> {
                                   left: Get.width * 0.04,
                                   bottom: Get.height * 0.01),
                               child: Text(
-                                'My Tickets'.tr,
+                                'MyTickets'.tr,
                                 style: GoogleFonts.poppins(
                                     fontSize: 20,
                                     color: ColorManager.kPrimaryColor,
@@ -142,7 +142,6 @@ class _TicketScreenState extends State<TicketScreen> {
                               borderRadius: BorderRadius.circular(10),
                               color: CupertinoColors.white,
                             ),
-                            // color: ColorManager.kWhiteColor,
                             width: MediaQuery.of(context).size.width / 3.5,
                             child: CupertinoTextField(
                               readOnly: true,

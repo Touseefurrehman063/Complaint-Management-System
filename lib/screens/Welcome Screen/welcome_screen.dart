@@ -56,8 +56,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
             Padding(
               padding: EdgeInsets.only(left: Get.width * 0.05),
-              child: Text(
-                  "Such a system helps in addressing customer issues,\n improving customer satisfaction, and maintaining \n a positive reputation.",
+              child: Text("welcomescreentext".tr,
                   style: GoogleFonts.poppins(
                       fontSize: 12,
                       color: ColorManager.kWhiteColor,
@@ -71,7 +70,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   buttonheight: Get.height * 0.07,
                   textfontsize: 18,
                   radius: Get.height * 0.06,
-                  text: "Let's Go",
+                  text: "LetsGo".tr,
                   backgroundColor: ColorManager.kWhiteColor,
                   buttonwidth: Get.width * 0.8,
                   onPress: () {

@@ -5,7 +5,6 @@ import 'package:cms_application/components/my_button.dart';
 import 'package:cms_application/controller/auth_controller.dart';
 import 'package:cms_application/screens/Auth%20Screen/forget_password.dart';
 import 'package:cms_application/screens/Dashboard/menu_drawer.dart';
-import 'package:cms_application/screens/Splash%20Screen/splash_screen.dart';
 import 'package:cms_application/utils/AppImages.dart';
 import 'package:cms_application/utils/color_manager.dart';
 import 'package:cms_application/utils/constants.dart';

@@ -1,6 +1,8 @@
 import 'package:cms_application/components/edit_profile_textfield.dart';
 import 'package:cms_application/components/my_button.dart';
+import 'package:cms_application/components/searchable_dropdown.dart';
 import 'package:cms_application/controller/edit_profile_controller.dart';
+import 'package:cms_application/models/address_model.dart';
 import 'package:cms_application/utils/AppImages.dart';
 import 'package:cms_application/utils/color_manager.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,9 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  var editProfileController =
+      Get.put<EditProfileController>(EditProfileController());
   @override
   @override
   Widget build(BuildContext context) {
@@ -28,11 +33,11 @@ class _EditProfileState extends State<EditProfile> {
           icon: const Icon(Icons.arrow_back_ios),
           color: ColorManager.kPrimaryBlueColor,
           onPressed: () {
-            Navigator.pop(context);
+            Get.back();
           },
         ),
         title: Text(
-          'Edit Profile'.tr,
+          'EditProfile'.tr,
           style: GoogleFonts.poppins(
             textStyle: GoogleFonts.poppins(
                 fontSize: 17,
@@ -94,7 +99,7 @@ class _EditProfileState extends State<EditProfile> {
                       }
                       return null;
                     },
-                    hintText: 'fullName'.tr,
+                    hintText: 'Name'.tr,
                     controller: editProfileController.nameController,
                   ),
                   EditProfileCustomTextField(
@@ -104,15 +109,15 @@ class _EditProfileState extends State<EditProfile> {
                       },
                       readonly: true,
                       // hintText: EditProfileController.i.formatearrival.toString(),
-                      hintText: "Date of Birth"),
+                      hintText: "DateofBirth".tr),
                   EditProfileCustomTextField(
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'pleaseenteryourname'.tr;
+                        return 'pleaseenteryourcontactno'.tr;
                       }
                       return null;
                     },
-                    hintText: 'mobilenumber'.tr,
+                    hintText: 'ContactNo'.tr,
                     controller: editProfileController.mobilenumberController,
                   ),
                   EditProfileCustomTextField(
@@ -122,115 +127,109 @@ class _EditProfileState extends State<EditProfile> {
                       }
                       return null;
                     },
-                    hintText: 'email'.tr,
+                    hintText: 'Email'.tr,
                     controller: editProfileController.emailController,
                   ),
                   EditProfileCustomTextField(
                     onTap: () async {
-                      // edit.selectedcountry = null;
-                      // edit.selectedcity = null;
-                      // edit.citiesList.clear();
-                      // edit.selectedprovince = null;
-                      // //  edit.provinceList.clear();
-                      // widget.province = 'province'.tr;
-                      // widget.city = 'city'.tr;
-
-                      // Countries generic =
-                      //     await searchabledropdown(context, edit.countriesList);
-                      // edit.selectedcountry = null;
-                      // edit.updateselectedCountry(generic);
-
-                      // if (generic.id != null) {
-                      //   edit.selectedcountry = generic;
-                      //   edit.selectedcountry =
-                      //       (generic.id == null) ? null : edit.selectedcountry;
-                      // }
-                      // String cid =
-                      //     EditProfileController.i.selectedcountry!.id.toString();
-                      // setState(() {
-                      //   _getProvinces(cid);
-                      // });
+                      editProfileController.selectedProvince = Address();
+                      editProfileController.selectedCity = Address();
+                      editProfileController.provinceList.clear();
+                      editProfileController.cityList.clear();
+                      Address generic = await searchabledropdown(
+                          context, editProfileController.countryList);
+                      editProfileController.updateSelectedCountry(generic);
+                      if (generic.id == null) {
+                        editProfileController.selectedCountry = generic;
+                        editProfileController.selectedCountry =
+                            ((generic.id == null)
+                                ? null
+                                : editProfileController.selectedCountry)!;
+                      }
+                      String provinceid =
+                          editProfileController.selectedCountry.id.toString();
+                      editProfileController.fetchProvince(provinceid);
                     },
                     validator: (value) {
-                      if (value == "country".tr) {
+                      if (editProfileController.selectedCountry.id == null) {
                         return 'pleaseselectyourcountry'.tr;
                       }
                       return null;
                     },
                     readonly: true,
-
-                    // hintText: EditProfileController.i.selectedcountry == null
-                    //     ? "country".tr
-                    //     : EditProfileController.i.selectedcountry?.name ?? "",
-
-                    hintText: "country",
+                    hintText: editProfileController.selectedCountry.id == null
+                        ? "Country".tr
+                        : editProfileController.selectedCountry.name ?? "",
                   ),
                   EditProfileCustomTextField(
                     onTap: () async {
-                      // edit.selectedprovince = null;
-                      // edit.selectedcity = null;
-                      // Provinces generic =
-                      //     await searchabledropdown(context, edit.provinceList);
-                      // edit.selectedprovince = null;
-                      // edit.updateselectedprovince(generic);
-
-                      // if (generic.id != null) {
-                      //   edit.selectedprovince = generic;
-                      //   edit.selectedprovince =
-                      //       (generic.id == null) ? null : edit.selectedprovince;
-                      // }
-                      // String cid = EditProfileController.i.selectedprovince!.id
-                      //     .toString();
-                      // setState(() {
-                      //   _getCities(cid);
-                      // });
+                      if (editProfileController.selectedCountry.id != null) {
+                        editProfileController.selectedCity = Address();
+                        editProfileController.cityList.clear();
+                        Address generic = await searchabledropdown(
+                            context, editProfileController.provinceList);
+                        editProfileController.updateSelectedProvince(generic);
+                        if (generic.id == null) {
+                          editProfileController.selectedProvince = generic;
+                          editProfileController.selectedProvince =
+                              ((generic.id == null)
+                                  ? null
+                                  : editProfileController.selectedProvince)!;
+                        }
+                        String cityid = editProfileController
+                            .selectedProvince.id
+                            .toString();
+                        editProfileController.fetchCities(cityid);
+                      }
                     },
                     validator: (value) {
-                      if (value == "province".tr) {
-                        return 'pleaseselectyourprovince';
+                      if (editProfileController.selectedProvince.id == null) {
+                        return 'pleaseselectyourprovince'.tr;
                       }
                       return null;
                     },
                     readonly: true,
-
-                    // hintText: EditProfileController.i.selectedprovince == null
-                    //     ? "province".tr
-                    //     : EditProfileController.i.selectedprovince?.name ?? "",
-                    hintText: "State/Province",
+                    hintText: editProfileController.selectedProvince.id == null
+                        ? "ProvinceState".tr
+                        : editProfileController.selectedProvince.name ?? "",
                   ),
                   EditProfileCustomTextField(
                     onTap: () async {
-                      // edit.selectedcity = null;
-                      // Cities generic =
-                      //     await searchabledropdown(context, edit.citiesList);
-                      // edit.selectedcity = null;
-                      // edit.updateselectedcity(generic);
-
-                      // if (generic.id != null) {
-                      //   edit.selectedcity = generic;
-                      //   edit.selectedcity =
-                      //       (generic.id == null) ? null : edit.selectedcity;
-                      // }
+                      if (editProfileController.selectedProvince.id != null) {
+                        Address generic = await searchabledropdown(
+                            context, editProfileController.cityList);
+                        editProfileController.updateSelectedCity(generic);
+                        if (generic.id == null) {
+                          editProfileController.selectedCity = generic;
+                          editProfileController.selectedCity =
+                              ((generic.id == null)
+                                  ? null
+                                  : editProfileController.selectedCity)!;
+                        }
+                      }
                     },
                     validator: (value) {
-                      if (value == "city") {
+                      if (editProfileController.selectedCity.id == null) {
                         return 'pleaseselectyourcity'.tr;
                       }
                       return null;
                     },
                     readonly: true,
-                    // hintText: EditProfileController.i.selectedcity == null
-                    //     ? "city".tr
-                    //     : EditProfileController.i.selectedcity?.name ?? "",
-                    hintText: "city",
+                    hintText: editProfileController.selectedCity.id == null
+                        ? "City".tr
+                        : editProfileController.selectedCity.name ?? "",
                   ),
                   SizedBox(height: Get.height * 0.01),
                   MyButton(
                       buttonheight: Get.height * 0.08,
-                      text: "Update",
+                      text: "Update".tr,
                       backgroundColor: ColorManager.kPrimaryColor,
                       buttonwidth: Get.width * 1,
-                      onPress: () {},
+                      onPress: () {
+                        if (_formKey.currentState!.validate()) {
+                          print('ok');
+                        }
+                      },
                       textColor: ColorManager.kWhiteColor,
                       radius: Get.width * 0.5,
                       textfontsize: 18),

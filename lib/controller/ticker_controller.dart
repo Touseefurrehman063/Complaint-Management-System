@@ -21,37 +21,38 @@ class TicketController extends GetxController implements GetxService {
   List<Containers> containerList = [];
 
   addinContainerList() {
+    containerList.clear();
     containerList.add(
       Containers(
-        name: "Overall",
+        name: "Overall".tr,
         count: "20",
         color: ColorManager.kPrimaryOverallColor.withOpacity(0.7),
       ),
     );
     containerList.add(
       Containers(
-        name: "Pending",
+        name: "Pending".tr,
         count: "5",
         color: ColorManager.kPrimarypendingColor,
       ),
     );
     containerList.add(
       Containers(
-        name: "In Progress",
+        name: "InProgress".tr,
         count: "5",
         color: ColorManager.kPrimaryinprogressColor,
       ),
     );
     containerList.add(
       Containers(
-        name: "Cancel",
+        name: "Cancel".tr,
         count: "5",
         color: ColorManager.kPrimarycancelColor,
       ),
     );
     containerList.add(
       Containers(
-        name: "Completed",
+        name: "Completed".tr,
         count: "5",
         color: ColorManager.kPrimarycompleteColor,
       ),

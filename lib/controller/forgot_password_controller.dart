@@ -4,7 +4,6 @@ import 'package:cms_application/components/toaster.dart';
 import 'package:cms_application/screens/Auth%20Screen/forget_password.dart';
 import 'package:cms_application/utils/color_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 class ForgotPasswordController extends GetxController implements GetxService {

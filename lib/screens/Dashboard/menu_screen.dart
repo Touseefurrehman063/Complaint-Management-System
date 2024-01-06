@@ -284,7 +284,7 @@ class _MenuScreenState extends State<MenuScreen> {
               SizedBox(
                 width: Get.width * 0.65,
                 child: Text(
-                  "Privacy Policy",
+                  "PrivacyPolicy".tr,
                   style: GoogleFonts.sora(
                     color: ColorManager.kWhiteColor,
                     fontWeight: FontWeight.w600,
@@ -300,7 +300,7 @@ class _MenuScreenState extends State<MenuScreen> {
               SizedBox(
                 width: Get.width * 0.65,
                 child: Text(
-                  "Terms & Conditions",
+                  "TermsConditions".tr,
                   style: GoogleFonts.sora(
                     color: ColorManager.kWhiteColor,
                     fontWeight: FontWeight.w600,

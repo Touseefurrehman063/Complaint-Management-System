@@ -11,7 +11,6 @@ import 'package:cms_application/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -36,7 +35,7 @@ class _DashBoardState extends State<DashBoard> with WidgetsBindingObserver {
         await launchUrl(Uri.parse(androidUrl));
       }
     } on Exception {
-      CustomToast.showToaster('WhatsAppisnotinstalledonyourdevice',
+      CustomToast.showToaster('WhatsAppisnotinstalledonyourdevice'.tr,
           ColorManager.kPrimaryColor, ColorManager.kWhiteColor);
     }
   }
@@ -134,13 +133,14 @@ class _DashBoardState extends State<DashBoard> with WidgetsBindingObserver {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.max,
             children: [
-              buildBottomNavItem(Images.homeIcon, "Home", 0, isSvg: false),
-              buildBottomNavItem(Images.ticketIcon, "Tickets", 1, isSvg: false),
-              buildBottomNavItem(Images.addticketIcon, "Add Ticket", 2,
+              buildBottomNavItem(Images.homeIcon, "Home".tr, 0, isSvg: false),
+              buildBottomNavItem(Images.ticketIcon, "Tickets".tr, 1,
                   isSvg: false),
-              buildBottomNavItem(Images.profileIcon, 'Profile', 3,
+              buildBottomNavItem(Images.addticketIcon, "AddTicket".tr, 2,
                   isSvg: false),
-              buildBottomNavItem(Images.helpIcon, 'Help', 4, isSvg: false),
+              buildBottomNavItem(Images.profileIcon, 'Profile'.tr, 3,
+                  isSvg: false),
+              buildBottomNavItem(Images.helpIcon, 'Help'.tr, 4, isSvg: false),
             ],
           ),
         ),

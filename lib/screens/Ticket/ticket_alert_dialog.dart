@@ -57,7 +57,7 @@ ticketAlert(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Ticket ID : '.tr,
+                        '${"TicketID".tr}${" : "}',
                         style: GoogleFonts.poppins(
                             fontSize: 20,
                             color: ColorManager.kblackColor,
@@ -66,7 +66,7 @@ ticketAlert(BuildContext context) {
                       SizedBox(
                         width: Get.width * 0.3,
                         child: Text(
-                          '0311010003110100031101000311010003110100'.tr,
+                          '031101000',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.poppins(
@@ -84,7 +84,7 @@ ticketAlert(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Created Date & Time'.tr,
+                        'CreatedDateTime'.tr,
                         style: GoogleFonts.poppins(
                             fontSize: 12,
                             color: ColorManager.kblackColor,
@@ -96,7 +96,7 @@ ticketAlert(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        '23 Dec,2023 | 09:00AM'.tr,
+                        '23 Dec,2023 | 09:00AM',
                         style: GoogleFonts.poppins(
                             fontSize: 12,
                             color: ColorManager.kPrimaryColor,
@@ -129,7 +129,7 @@ ticketAlert(BuildContext context) {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      'Laboratory '.tr,
+                                      'Laboratory',
                                       maxLines: 3,
                                       overflow: TextOverflow.ellipsis,
                                       style: GoogleFonts.poppins(
@@ -148,14 +148,14 @@ ticketAlert(BuildContext context) {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Sub Department'.tr,
+                                      'SubDepartment'.tr,
                                       style: GoogleFonts.poppins(
                                           fontSize: 12,
                                           color: ColorManager.kWhiteColor,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      'Nematology '.tr,
+                                      'Nematology',
                                       maxLines: 3,
                                       overflow: TextOverflow.ellipsis,
                                       style: GoogleFonts.poppins(
@@ -185,7 +185,7 @@ ticketAlert(BuildContext context) {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      'Support '.tr,
+                                      'Support ',
                                       maxLines: 3,
                                       overflow: TextOverflow.ellipsis,
                                       style: GoogleFonts.poppins(
@@ -211,8 +211,7 @@ ticketAlert(BuildContext context) {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      'High Laboratory Laboratory Laboratory Laboratory Laboratory Laboratory Laboratory Laboratory Laboratory Laboratory '
-                                          .tr,
+                                      'High'.tr,
                                       maxLines: 3,
                                       overflow: TextOverflow.ellipsis,
                                       style: GoogleFonts.poppins(
@@ -269,7 +268,7 @@ ticketAlert(BuildContext context) {
                   Row(
                     children: [
                       Text(
-                        'Status: '.tr,
+                        '${"Status".tr}${": "}',
                         style: GoogleFonts.poppins(
                             fontSize: 12,
                             color: ColorManager.kWhiteColor,

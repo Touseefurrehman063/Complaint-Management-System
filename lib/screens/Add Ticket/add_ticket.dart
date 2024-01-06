@@ -32,7 +32,7 @@ class _AddTicketsState extends State<AddTickets> {
           },
         ),
         title: Text(
-          'Add Tickets'.tr,
+          'AddTicket'.tr,
           style: GoogleFonts.poppins(
             textStyle: GoogleFonts.poppins(
                 fontSize: 17,
@@ -73,7 +73,7 @@ class _AddTicketsState extends State<AddTickets> {
                 // hintText: controller.selectedpersonalTitle == null
                 //     ? 'title'.tr
                 //     : controller.selectedpersonalTitle!.name.toString(),
-                hintText: "Select Department",
+                hintText: "SelectDepartment".tr,
               ),
               RegisterCustomTextField(
                 // validator: (value) {
@@ -102,7 +102,7 @@ class _AddTicketsState extends State<AddTickets> {
                 // hintText: controller.selectedpersonalTitle == null
                 //     ? 'title'.tr
                 //     : controller.selectedpersonalTitle!.name.toString(),
-                hintText: "Select Sub Department",
+                hintText: "SelectSubDepartment".tr,
               ),
               RegisterCustomTextField(
                 // validator: (value) {
@@ -131,7 +131,7 @@ class _AddTicketsState extends State<AddTickets> {
                 // hintText: controller.selectedpersonalTitle == null
                 //     ? 'title'.tr
                 //     : controller.selectedpersonalTitle!.name.toString(),
-                hintText: "Select Category",
+                hintText: "SelectCategory".tr,
               ),
               RegisterCustomTextField(
                 // validator: (value) {
@@ -160,7 +160,7 @@ class _AddTicketsState extends State<AddTickets> {
                 // hintText: controller.selectedpersonalTitle == null
                 //     ? 'title'.tr
                 //     : controller.selectedpersonalTitle!.name.toString(),
-                hintText: "Select Priority",
+                hintText: "SelectPriority".tr,
               ),
               CustomTextField(
                 // validator: (p0) {
@@ -185,7 +185,7 @@ class _AddTicketsState extends State<AddTickets> {
               ),
               MyButton(
                 buttonheight: Get.height * 0.07,
-                text: "Attach File",
+                text: "AttachFile".tr,
                 backgroundColor: ColorManager.kWhiteColor,
                 buttonwidth: Get.width * 1,
                 onPress: () {},
@@ -199,7 +199,7 @@ class _AddTicketsState extends State<AddTickets> {
                 children: [
                   MyButton(
                       buttonheight: Get.height * 0.06,
-                      text: "Update",
+                      text: "Update".tr,
                       backgroundColor: ColorManager.kPrimaryColor,
                       buttonwidth: Get.width * 0.4,
                       onPress: () {},
@@ -208,7 +208,7 @@ class _AddTicketsState extends State<AddTickets> {
                       textfontsize: 18),
                   MyButton(
                     buttonheight: Get.height * 0.06,
-                    text: "Cancel",
+                    text: "Cancel".tr,
                     backgroundColor: ColorManager.kWhiteColor,
                     buttonwidth: Get.width * 0.4,
                     onPress: () {},

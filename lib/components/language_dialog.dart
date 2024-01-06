@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cms_application/controller/language_controller.dart';
+import 'package:cms_application/controller/ticker_controller.dart';
 import 'package:cms_application/localDB/local_db.dart';
 import 'package:cms_application/models/language_model.dart';
 import 'package:cms_application/utils/color_manager.dart';
@@ -68,7 +69,7 @@ Future<String?> languageSelector(
                         backgroundColor: ColorManager.kWhiteColor),
                     onPressed: () => Navigator.pop(context, 'Cancel'),
                     child: Text(
-                      'cancel'.tr,
+                      'Cancel'.tr,
                       style: const TextStyle(color: ColorManager.kPrimaryColor),
                     ),
                   ),
@@ -85,9 +86,10 @@ Future<String?> languageSelector(
                           Navigator.pop(context, 'ok'.tr);
                           cont.updateLocale(cont.selected!.locale!);
                           LocalDb().setLanguage(cont.selected);
+                          TicketController.i.addinContainerList();
                         },
                         child: Text(
-                          'ok'.tr,
+                          'Ok'.tr,
                           style: const TextStyle(
                               color: ColorManager.kPrimaryColor),
                         )),

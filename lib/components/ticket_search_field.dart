@@ -51,7 +51,7 @@ class _CustomTicketSearchFieldState extends State<CustomTicketSearchField> {
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
                         // contentPadding: EdgeInsets.only(bottom: Get.height * 0.01),
-                        hintText: "Enter your ticket ID",
+                        hintText: "EnteryourticketID".tr,
                         hintStyle: GoogleFonts.poppins(
                           fontSize: 12,
                           color: ColorManager.kblackColor,

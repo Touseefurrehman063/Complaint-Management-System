@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Center(
                   child: Text(
-                    'Hello Mr. Ahmad !'.tr,
+                    '${'Hello'.tr} ${" Mr. Ahmad "} ${"!"}',
                     style: GoogleFonts.poppins(
                         fontSize: 18,
                         color: ColorManager.kPrimaryColor,
@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Center(
                   child: Text(
-                    'Track Your Camplaint'.tr,
+                    'TrackYourCamplaint'.tr,
                     style: GoogleFonts.poppins(
                         fontSize: 12,
                         color: ColorManager.kblackColor,
@@ -196,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
-                                  'Overall Tickets',
+                                  'OverallTickets'.tr,
                                   style: GoogleFonts.poppins(
                                       fontSize: 12,
                                       color: ColorManager.kWhiteColor,
@@ -272,7 +272,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                                 Text(
-                                  'Pending Tickets\n( Not process yet )',
+                                  'PendingTickets'.tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.poppins(
                                       fontSize: 12,
@@ -341,7 +341,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                                 Text(
-                                  'In Progress\nTickets',
+                                  'InProgressTickets'.tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.poppins(
                                       fontSize: 12,
@@ -418,7 +418,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                                 Text(
-                                  'Cancel Tickets',
+                                  'CancelTickets'.tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.poppins(
                                       fontSize: 12,
@@ -487,7 +487,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                                 Text(
-                                  'Completed',
+                                  'Completed'.tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.poppins(
                                       fontSize: 12,
